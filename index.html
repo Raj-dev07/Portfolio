@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO CORE ===== -->
+  <title>Raj | Full Stack Developer & Programmer</title>
+  <meta name="description" content="Raj is a passionate Full Stack Developer and Programmer who crafts clean, high-performance web apps and game prototypes. Available for freelance and full-time opportunities." />
+  <meta name="keywords" content="Raj, Full Stack Developer, Web Developer, JavaScript, Python, React, Portfolio, Programmer, Game Dev, KhatarnakGPT" />
+  <meta name="author" content="Raj" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#8A2BE2" />
+  <link rel="canonical" href="https://raj-dev07.github.io/" />
+
+  <!-- ===== OPEN GRAPH (Social Media Preview) ===== -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://raj-dev07.github.io/" />
+  <meta property="og:title"       content="Raj | Full Stack Developer & Programmer" />
+  <meta property="og:description" content="I craft clean, high-performance digital experiences — from snappy web apps to game prototypes. Passionate about code that's as readable as it is functional." />
+  <meta property="og:image"       content="https://raj-dev07.github.io/pp.jpeg" />
+  <meta property="og:site_name"   content="Raj.dev Portfolio" />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- ===== TWITTER CARD ===== -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Raj | Full Stack Developer & Programmer" />
+  <meta name="twitter:description" content="I craft clean, high-performance digital experiences — from snappy web apps to game prototypes." />
+  <meta name="twitter:image"       content="https://raj-dev07.github.io/pp.jpeg" />
+  <meta name="twitter:creator"     content="@raj_dev07" />
+
+  <!-- ===== FAVICON ===== -->
+  <link rel="icon"             type="image/x-icon"  href="favicon.ico" />
+  <link rel="icon"             type="image/png"     href="favicon-32x32.png" sizes="32x32" />
+  <link rel="apple-touch-icon"                      href="apple-touch-icon.png" />
+  <link rel="manifest"                              href="site.webmanifest" />
+
+  <!-- ===== GOOGLE FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- ===== FONT AWESOME 6 ===== -->
+  <link id="fa-css" rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/all.min.css"
+    crossorigin="anonymous" />
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES & RESET
+       ============================================================ */
+
+    :root {
+      /* Dark theme (default) */
+      --bg-primary:     #0a0a0a;
+      --bg-secondary:   #111111;
+      --bg-card:        #141414;
+      --bg-input:       #1a1a1a;
+      --purple-main:    #8A2BE2;
+      --purple-light:   #a855f7;
+      --purple-glow:    rgba(138, 43, 226, 0.35);
+      --purple-subtle:  rgba(138, 43, 226, 0.08);
+      --text-primary:   #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --text-muted:     #555555;
+      --border-subtle:  rgba(138, 43, 226, 0.18);
+      --input-border:   rgba(138, 43, 226, 0.25);
+      --font-display:   'Space Grotesk', sans-serif;
+      --font-body:      'Inter', sans-serif;
+      --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-sm:      8px;
+      --radius-md:      14px;
+      --radius-lg:      22px;
+    }
+
+    /* ===== LIGHT MODE VARIABLES ===== */
+    body.light-mode {
+      --bg-primary:     #f4f3ff;
+      --bg-secondary:   #eceaf8;
+      --bg-card:        #ffffff;
+      --bg-input:       #faf9ff;
+      --purple-glow:    rgba(138, 43, 226, 0.18);
+      --purple-subtle:  rgba(138, 43, 226, 0.07);
+      --text-primary:   #0f0a1e;
+      --text-secondary: #4a4060;
+      --text-muted:     #9993aa;
+      --border-subtle:  rgba(138, 43, 226, 0.22);
+      --input-border:   rgba(138, 43, 226, 0.35);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      visibility: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    body.ready { visibility: visible; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar       { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--purple-main); border-radius: 999px; }
+
+    /* ============================================================
+       LOADER SCREEN
+       ============================================================ */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--bg-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      transition: opacity 0.55s ease, visibility 0.55s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .loader-logo {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .loader-logo span { color: var(--purple-light); }
+
+    .loader-bar-track {
+      width: 220px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .loader-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple-main), var(--purple-light));
+      border-radius: 999px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .loader-label {
+      font-family: var(--font-display);
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       GLOBAL UTILITY
+       ============================================================ */
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .section-title span { color: var(--purple-light); }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple-main), var(--purple-light));
+      border-radius: 999px;
+      margin-bottom: 40px;
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+
+    .glow-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--purple-main);
+      color: #fff;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 0 22px var(--purple-glow);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .glow-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .glow-btn:hover        { transform: translateY(-2px); box-shadow: 0 0 40px var(--purple-glow), 0 8px 24px rgba(0,0,0,0.4); }
+    .glow-btn:hover::after { opacity: 1; }
+
+    .glow-btn.outline {
+      background: transparent;
+      border: 1.5px solid var(--purple-main);
+      color: var(--purple-light);
+      box-shadow: none;
+    }
+
+    .glow-btn.outline:hover { background: var(--purple-subtle); box-shadow: 0 0 22px var(--purple-glow); }
+    .glow-btn.sm            { font-size: 0.82rem; padding: 10px 18px; }
+
+    /* ============================================================
+       SCROLL-REVEAL BASE STATES
+       ============================================================ */
+
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale { opacity: 1; }
+
+    .gsap-ready.reveal-up    { opacity: 0; transform: translateY(40px); }
+    .gsap-ready.reveal-left  { opacity: 0; transform: translateX(-40px); }
+    .gsap-ready.reveal-right { opacity: 0; transform: translateX(40px); }
+    .gsap-ready.reveal-scale { opacity: 0; transform: scale(0.92); }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 10px 10px;
+      transition: background 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(10, 10, 10, 0.93);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 13px 0;
+    }
+
+    body.light-mode .navbar.scrolled {
+      background: rgba(244, 243, 255, 0.93);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+    .nav-logo span { color: var(--purple-light); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--purple-light);
+      border-radius: 999px;
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover       { color: var(--text-primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Active nav link highlight */
+    .nav-links a.nav-active {
+      color: var(--purple-light);
+    }
+
+    .nav-links a.nav-active::after {
+      width: 100%;
+    }
+
+    /* ===== THEME TOGGLE BUTTON ===== */
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .theme-toggle {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--purple-main);
+      color: var(--purple-light);
+      box-shadow: 0 0 16px var(--purple-glow);
+    }
+
+    /* Hamburger button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 999px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 90px;
+      padding-bottom: 60px;
+    }
+
+    #particles-js {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: min(700px, 90vw);
+      height: min(700px, 90vw);
+      background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.12) 0%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--purple-light);
+      margin-bottom: 28px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-badge .dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+      50%       { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 7vw, 5.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      word-break: break-word;
+    }
+
+    .hero-name .highlight {
+      background: linear-gradient(135deg, var(--purple-main), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-typed-wrapper {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2.5vw, 1.65rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 26px;
+      min-height: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .typed-prefix { color: var(--purple-light); }
+
+    .hero-desc {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--text-secondary);
+      max-width: 500px;
+      line-height: 1.8;
+      margin-bottom: 38px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Floating code card — desktop only */
+    .hero-code-card {
+      position: absolute;
+      right: 4%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 22px 26px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      line-height: 2;
+      color: var(--text-secondary);
+      z-index: 2;
+      min-width: 240px;
+      max-width: 280px;
+      box-shadow: 0 0 40px rgba(138, 43, 226, 0.1), 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .code-dot-row        { display: flex; gap: 7px; margin-bottom: 14px; }
+    .code-dot            { width: 11px; height: 11px; border-radius: 50%; }
+    .code-dot.red        { background: #ff5f57; }
+    .code-dot.yellow     { background: #febc2e; }
+    .code-dot.green      { background: #28c840; }
+    .code-line .kw       { color: var(--purple-light); }
+    .code-line .str      { color: #86efac; }
+    .code-line .fn       { color: #fbbf24; }
+    .code-line .cm       { color: var(--text-muted); font-style: italic; }
+    .code-line .num      { color: #f97316; }
+
+    /* ============================================================
+       ABOUT SECTION
+       ============================================================ */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .about-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding: 28px;
+    }
+
+    .about-avatar-ring {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-main), #1a0a2e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px var(--purple-glow);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .about-avatar-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--purple-main), var(--purple-light), transparent 60%, var(--purple-main));
+      z-index: -1;
+      animation: spin-ring 7s linear infinite;
+    }
+
+    @keyframes spin-ring { to { transform: rotate(360deg); } }
+
+    .about-avatar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .about-chip {
+      position: absolute;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 14px;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      pointer-events: none;
+    }
+
+    .about-chip.top-right   { top: 4px; right: 0; }
+    .about-chip.bottom-left { bottom: 4px; left: 0; }
+    .about-chip span        { color: var(--purple-light); }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      margin-bottom: 16px;
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .about-tag {
+      background: var(--purple-subtle);
+      border: 1px solid var(--border-subtle);
+      padding: 6px 15px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--purple-light);
+    }
+
+    /* ============================================================
+       SKILLS SECTION
+       ============================================================ */
+
+    .skills-bg {
+      background: linear-gradient(180deg, transparent, rgba(138, 43, 226, 0.04), transparent);
+    }
+
+    .skills-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .skills-header .divider-line    { margin: 0 auto 40px; }
+    .skills-header .section-subtitle { margin: 0 auto; }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 28px 20px;
+      text-align: center;
+      transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--purple-subtle), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .skill-card:hover { border-color: var(--purple-main); transform: translateY(-4px); box-shadow: 0 0 28px var(--purple-glow), 0 12px 40px rgba(0,0,0,0.4); }
+    .skill-card:hover::before { opacity: 1; }
+
+    /* ============================================================
+       FONT AWESOME — shared icon styles
+       ============================================================ */
+
+    .skill-icon  { font-size: 2.2rem; margin-bottom: 14px; display: block; position: relative; z-index: 1; color: var(--purple-light); }
+    .skill-name  { font-family: var(--font-display); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px; position: relative; z-index: 1; }
+    .skill-level { font-size: 0.75rem; color: var(--purple-light); font-weight: 500; position: relative; z-index: 1; }
+    .project-banner i    { font-size: 3rem; position: relative; z-index: 1; color: var(--text-primary); opacity: 0.9; }
+    .about-avatar-inner i { font-size: 4.5rem; color: rgba(255,255,255,0.9); }
+    .about-chip i        { color: var(--purple-light); margin-right: 5px; }
+    .contact-link-icon i { font-size: 1.1rem; color: var(--purple-light); transition: color var(--transition); }
+    .contact-link:hover .contact-link-icon i { color: #fff; }
+    .stat-icon  { font-size: 1.6rem; color: var(--purple-main); margin-bottom: 12px; display: block; opacity: 0.7; }
+    .glow-btn i { font-size: 0.9em; }
+
+    .skill-bar-track {
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--purple-main), var(--purple-light));
+      border-radius: 999px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       PROJECTS SECTION
+       ============================================================ */
+
+    .projects-header { margin-bottom: 60px; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .project-card:hover { border-color: var(--purple-main); box-shadow: 0 0 32px var(--purple-glow), 0 16px 48px rgba(0,0,0,0.5); }
+
+    .project-banner {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Project image support */
+    .project-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      z-index: 0;
+    }
+
+    .project-card:hover .project-banner img { transform: scale(1.06); }
+
+    .project-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, var(--bg-card));
+      z-index: 1;
+    }
+
+    /* When banner has an image, hide the icon fallback */
+    .project-banner.has-image i { display: none; }
+
+    .project-banner.game-1 { background: linear-gradient(135deg, #1a0533, #3b0764); }
+    .project-banner.game-2 { background: linear-gradient(135deg, #0f172a, #1e3a5f); }
+    .project-banner.web-1  { background: linear-gradient(135deg, #0a1628, #1e3a2f); }
+    .project-banner.web-2  { background: linear-gradient(135deg, #1a0e00, #3d1f00); }
+
+    .project-body     { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .project-category { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--purple-light); margin-bottom: 8px; }
+    .project-title    { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+    .project-desc     { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; flex: 1; margin-bottom: 18px; }
+
+    .project-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .project-tag   { background: rgba(138, 43, 226, 0.1); border: 1px solid var(--border-subtle); padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; color: var(--purple-light); font-weight: 500; }
+    .project-footer{ display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ============================================================
+       STATS SECTION
+       ============================================================ */
+
+    .stats-section {
+      padding: 80px 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      text-align: center;
+    }
+
+    .stat-item { padding: 16px 12px; }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--purple-main), var(--purple-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .stat-label { font-size: 0.84rem; color: var(--text-secondary); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    /* ============================================================
+       CONTACT SECTION
+       ============================================================ */
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(600px, 100%);
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .contact-intro p { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 24px; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 14px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .contact-link:hover { border-color: var(--purple-main); background: var(--purple-subtle); transform: translateX(6px); box-shadow: 0 0 20px var(--purple-glow); }
+
+    .contact-link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--purple-subtle);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .contact-link:hover .contact-link-icon { background: var(--purple-main); border-color: var(--purple-main); box-shadow: 0 0 16px var(--purple-glow); }
+
+    .contact-link-info strong { display: block; font-family: var(--font-display); font-size: 0.88rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+    .contact-link-info span   { font-size: 0.8rem; color: var(--text-muted); }
+
+    /* ============================================================
+       CONTACT FORM
+       ============================================================ */
+
+    .contact-form-box {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(168, 85, 247, 0.04));
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 38px 34px;
+    }
+
+    .contact-form-box h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .contact-form-box > p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 26px;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--purple-light);
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--input-border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      resize: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--purple-main);
+      box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.12);
+    }
+
+    .form-group textarea { min-height: 110px; }
+
+    .form-status {
+      font-size: 0.85rem;
+      margin-top: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+
+    .form-status.success {
+      display: block;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #22c55e;
+    }
+
+    .form-status.error {
+      display: block;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+
+    .footer { padding: 30px 0; border-top: 1px solid var(--border-subtle); text-align: center; }
+    .footer p { font-size: 0.84rem; color: var(--text-muted); }
+    .footer p span { color: var(--purple-light); }
+
+    /* ============================================================
+       AVATAR IMAGE
+       ============================================================ */
+
+    #pp-css {
+      height: 180px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 100%;
+      filter: drop-shadow(0 0 10px #4E00FF);
+      box-shadow: inset 0 0 30px black;
+    }
+
+    /* ============================================================
+       RESPONSIVE — TABLET  ≤ 900px
+       ============================================================ */
+
+    @media (max-width: 900px) {
+      .about-grid   { grid-template-columns: 1fr; gap: 52px; }
+      .about-visual { order: -1; }
+      .contact-grid { grid-template-columns: 1fr; gap: 52px; }
+      .hero-code-card { display: none; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — MOBILE  ≤ 768px
+       ============================================================ */
+
+    @media (max-width: 768px) {
+      .section   { padding: 72px 0; }
+      .container { padding: 0 18px; }
+
+      .nav-toggle { display: flex; }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100dvh;
+        width: min(280px, 80vw);
+        background: rgba(10, 10, 10, 0.97);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+        transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 1px solid var(--border-subtle);
+        padding: 0 36px;
+        z-index: 1050;
+      }
+
+      body.light-mode .nav-links {
+        background: rgba(244, 243, 255, 0.97);
+      }
+
+      .nav-links.open { right: 0; }
+      .nav-links a    { font-size: 1.1rem; }
+
+      .hero {
+        padding-top: 80px;
+        min-height: 100svh;
+        align-items: flex-start;
+        padding-bottom: 60px;
+      }
+
+      .about-avatar-ring { width: 210px; height: 210px; }
+      .about-avatar-inner i { font-size: 3.5rem; }
+      .about-chip { font-size: 0.72rem; padding: 7px 11px; }
+      .about-chip.top-right   { top: -4px; right: -4px; }
+      .about-chip.bottom-left { bottom: -4px; left: -4px; }
+
+      .skills-grid    { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid  { grid-template-columns: 1fr; }
+      .stats-grid     { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+      .glow-btn       { font-size: 0.88rem; padding: 12px 22px; }
+      .contact-form-box { padding: 28px 20px; }
+    }
+
+    /* ============================================================
+       RESPONSIVE — SMALL MOBILE  ≤ 480px
+       ============================================================ */
+
+    @media (max-width: 480px) {
+      .skills-grid   { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .stat-number   { font-size: 2.2rem; }
+      .about-avatar-ring    { width: 180px; height: 180px; }
+      .about-avatar-inner i { font-size: 3rem; }
+      .section-title { font-size: 1.7rem; }
+      #pp-css        { height: 140px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       LOADER SCREEN
+       ============================================================ -->
+  <div id="loader" role="status" aria-label="Loading portfolio">
+    <div class="loader-logo">Raj<span>.</span>dev</div>
+    <div class="loader-bar-track">
+      <div class="loader-bar-fill" id="loaderBar"></div>
+    </div>
+    <p class="loader-label" id="loaderLabel">Initializing…</p>
+  </div>
+
+  <!-- ============================================================
+       PARTICLES BACKGROUND
+       ============================================================ -->
+  <div id="particles-js" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-inner">
+
+      <a href="#hero" class="nav-logo">Raj<span>.</span>dev</a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about"    data-section="about"    onclick="closeMenu()">About</a></li>
+        <li><a href="#skills"   data-section="skills"   onclick="closeMenu()">Skills</a></li>
+        <li><a href="#projects" data-section="projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#stats"    data-section="stats"    onclick="closeMenu()">Stats</a></li>
+        <li><a href="#contact"  data-section="contact"  onclick="closeMenu()">Contact</a></li>
+      </ul>
+
+      <div class="nav-controls">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" title="Toggle theme">
+          <i class="fa-solid fa-moon" id="themeIcon"></i>
+        </button>
+
+        <!-- Hamburger -->
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          onclick="toggleMenu()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero" id="hero" aria-label="Hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <div class="hero-badge">
+          <span class="dot" aria-hidden="true"></span>
+          Available for projects
+        </div>
+
+        <h1 class="hero-name">
+          Hi, I'm<br />
+          <span class="highlight">Raj.</span>
+        </h1>
+
+        <div class="hero-typed-wrapper" aria-live="polite">
+          <span class="typed-prefix" aria-hidden="true">&gt;_</span>
+          <span id="typed-output"></span>
+        </div>
+
+        <p class="hero-desc">
+          I craft clean, high-performance digital experiences — from snappy
+          web apps to game prototypes. Passionate about code that's as
+          readable as it is functional.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projects" class="glow-btn">View My Work <i class="fa-solid fa-arrow-down"></i></a>
+          <a href="#contact"  class="glow-btn outline">Get In Touch <i class="fa-solid fa-paper-plane"></i></a>
+          <a href="Raj_Resume.pdf" class="glow-btn outline" download="Raj_Resume.pdf" aria-label="Download Resume">
+            <i class="fa-solid fa-download"></i> Resume
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Floating code card (hidden on mobile via CSS) -->
+    <div class="hero-code-card" id="heroCodeCard" aria-hidden="true">
+      <div class="code-dot-row">
+        <div class="code-dot red"></div>
+        <div class="code-dot yellow"></div>
+        <div class="code-dot green"></div>
+      </div>
+      <div class="code-line"><span class="cm">// about_me.js</span></div>
+      <div class="code-line"><span class="kw">const</span> dev = {</div>
+      <div class="code-line">&nbsp;&nbsp;name: <span class="str">'Raj'</span>,</div>
+      <div class="code-line">&nbsp;&nbsp;role: <span class="str">'Full-Stack Dev'</span>,</div>
+      <div class="code-line">&nbsp;&nbsp;exp:&nbsp; <span class="num">3</span> + <span class="str">' years'</span>,</div>
+      <div class="code-line">&nbsp;&nbsp;<span class="fn">build</span>() {</div>
+      <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="str">'🚀'</span>;</div>
+      <div class="code-line">&nbsp;&nbsp;}</div>
+      <div class="code-line">};</div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+       ============================================================ -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Visual / avatar -->
+        <div class="about-visual reveal-left">
+          <div class="about-avatar-ring">
+            <div class="about-avatar-inner">
+              <img src="pp.jpeg" alt="Raj — Full Stack Developer" id="pp-css" loading="lazy" width="180" height="180" />
+            </div>
+          </div>
+          <div class="about-chip top-right"><i class="fa-solid fa-laptop-code"></i> <span>3+ yrs coding</span></div>
+          <div class="about-chip bottom-left"><i class="fa-solid fa-trophy"></i> <span>20+ projects</span></div>
+        </div>
+
+        <!-- Bio text -->
+        <div class="about-text reveal-right">
+          <span class="section-label">About Me</span>
+          <h2 class="section-title">
+            Turning ideas into<br /><span>digital reality</span>
+          </h2>
+          <div class="divider-line"></div>
+
+          <p>
+            I'm a self-driven developer with a deep passion for building things
+            that live on the internet. Whether it's a sleek UI, a backend API,
+            or a browser-based game — I enjoy tackling every layer of the stack
+            with curiosity and precision.
+          </p>
+          <p>
+            When I'm not shipping features, I'm exploring new frameworks,
+            contributing to open source, or leveling up through competitive
+            programming challenges.
+          </p>
+
+          <div class="about-tags">
+            <span class="about-tag">Problem Solver</span>
+            <span class="about-tag">Open Source</span>
+            <span class="about-tag">Game Dev</span>
+            <span class="about-tag">Clean Code</span>
+            <span class="about-tag">Full-Stack</span>
+            <span class="about-tag">Competitive Coding</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS SECTION
+       ============================================================ -->
+  <section class="skills-section skills-bg section" id="skills">
+    <div class="container">
+
+      <div class="skills-header">
+        <span class="section-label">Skills</span>
+        <h2 class="section-title">Tech I <span>work with</span></h2>
+        <div class="divider-line"></div>
+        <p class="section-subtitle">
+          A curated set of languages and tools I've sharpened through real
+          projects and consistent practice.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-brands fa-html5"></i></span>
+          <div class="skill-name">HTML5</div>
+          <div class="skill-level">Expert</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div>
+        </div>
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-brands fa-css3-alt"></i></span>
+          <div class="skill-name">CSS3</div>
+          <div class="skill-level">Advanced</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div>
+        </div>
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-brands fa-js"></i></span>
+          <div class="skill-name">JavaScript</div>
+          <div class="skill-level">Advanced</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div>
+        </div>
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-brands fa-python"></i></span>
+          <div class="skill-name">Python</div>
+          <div class="skill-level">Advanced</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div>
+        </div>
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-solid fa-code"></i></span>
+          <div class="skill-name">C++</div>
+          <div class="skill-level">Intermediate</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="70"></div></div>
+        </div>
+
+        <div class="skill-card reveal-scale" data-tilt data-tilt-max="10">
+          <span class="skill-icon"><i class="fa-brands fa-java"></i></span>
+          <div class="skill-name">Java</div>
+          <div class="skill-level">Intermediate</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-level="68"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS SECTION
+       ============================================================ -->
+  <section class="projects-section section" id="projects">
+    <div class="container">
+
+      <div class="projects-header reveal-up">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Things I've <span>built</span></h2>
+        <div class="divider-line"></div>
+        <p class="section-subtitle">
+          A selection of projects I'm proud of — ranging from browser games
+          to full web applications.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- KhatarnakGPT -->
+        <div class="project-card reveal-up" data-tilt data-tilt-max="5">
+          <div class="project-banner game-1">
+            <!-- To add a screenshot: set data-img="path/to/screenshot.jpg" -->
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="project-body">
+            <p class="project-category">AI Model</p>
+            <h3 class="project-title">KhatarnakGPT</h3>
+            <p class="project-desc">
+              An AI-powered chatbot designed to answer questions, assist with coding, and generate ideas in real time. Built with a clean interface and fast response system.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">PyTorch</span>
+              <span class="project-tag">NLP</span>
+            </div>
+            <div class="project-footer">
+              <a href="#" class="glow-btn sm" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+              <a href="https://github.com/raj-dev07" class="glow-btn sm outline" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Void Reaper -->
+        <div class="project-card reveal-up" data-tilt data-tilt-max="5">
+          <div class="project-banner game-2">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <div class="project-body">
+            <p class="project-category">Game Dev</p>
+            <h3 class="project-title">Void Reaper</h3>
+            <p class="project-desc">
+              A retro-style top-down space shooter built with the HTML5 Canvas API. Includes procedural enemy waves, power-ups, particle explosions, and a high-score leaderboard.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">Canvas API</span>
+              <span class="project-tag">Game Loop</span>
+              <span class="project-tag">JavaScript</span>
+            </div>
+            <div class="project-footer">
+              <a href="#" class="glow-btn sm" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+              <a href="https://github.com/raj-dev07" class="glow-btn sm outline" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Utility Web App -->
+        <div class="project-card reveal-up" data-tilt data-tilt-max="5">
+          <div class="project-banner web-1">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <div class="project-body">
+            <p class="project-category">Web Application</p>
+            <h3 class="project-title">Utility Web App</h3>
+            <p class="project-desc">
+              A multi-tool browser app featuring a unit converter, a colour palette generator, a Markdown previewer, and a Pomodoro timer — all in one clean interface.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">React</span>
+              <span class="project-tag">Local Storage</span>
+              <span class="project-tag">CSS Modules</span>
+            </div>
+            <div class="project-footer">
+              <a href="#" class="glow-btn sm" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+              <a href="https://github.com/raj-dev07" class="glow-btn sm outline" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Food Delivery Site -->
+        <div class="project-card reveal-up" data-tilt data-tilt-max="5">
+          <div class="project-banner web-2">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <div class="project-body">
+            <p class="project-category">UI / Frontend</p>
+            <h3 class="project-title">Food Delivery Site</h3>
+            <p class="project-desc">
+              A fully responsive food delivery landing page with animated menus, a cart sidebar, live order tracking UI, and a smooth checkout flow built with vanilla JS.
+            </p>
+            <div class="project-tags">
+              <span class="project-tag">HTML/CSS</span>
+              <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Responsive</span>
+            </div>
+            <div class="project-footer">
+              <a href="#" class="glow-btn sm" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+              <a href="https://github.com/raj-dev07" class="glow-btn sm outline" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS SECTION
+       ============================================================ -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+
+        <div class="stat-item reveal-scale">
+          <i class="fa-solid fa-folder-open stat-icon" aria-hidden="true"></i>
+          <span class="stat-number" data-target="20">0</span>
+          <p class="stat-label">Projects Built</p>
+        </div>
+
+        <div class="stat-item reveal-scale">
+          <i class="fa-solid fa-microchip stat-icon" aria-hidden="true"></i>
+          <span class="stat-number" data-target="12">0</span>
+          <p class="stat-label">Technologies Learned</p>
+        </div>
+
+        <div class="stat-item reveal-scale">
+          <i class="fa-solid fa-clock stat-icon" aria-hidden="true"></i>
+          <span class="stat-number" data-target="1500">0</span>
+          <p class="stat-label">Coding Hours</p>
+        </div>
+
+        <div class="stat-item reveal-scale">
+          <i class="fa-solid fa-calendar-days stat-icon" aria-hidden="true"></i>
+          <span class="stat-number" data-target="3">0</span>
+          <p class="stat-label">Years + Experience</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+       ============================================================ -->
+  <section class="contact-section section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Links -->
+        <div class="reveal-left">
+          <span class="section-label">Contact</span>
+          <h2 class="section-title">
+            Let's work<br /><span>together</span>
+          </h2>
+          <div class="divider-line"></div>
+
+          <div class="contact-intro">
+            <p>
+              Whether you have a project idea, a job opportunity, or just want
+              to talk tech — my inbox is always open. I'll get back to you
+              as soon as possible.
+            </p>
+          </div>
+
+          <div class="contact-links">
+
+            <a href="mailto:raj.dev.code@gmail.com" class="contact-link">
+              <div class="contact-link-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+              <div class="contact-link-info">
+                <strong>Email</strong>
+                <span>raj.dev.code@gmail.com</span>
+              </div>
+            </a>
+
+            <a href="https://github.com/raj-dev07" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <div class="contact-link-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></div>
+              <div class="contact-link-info">
+                <strong>GitHub</strong>
+                <span>github.com/raj-dev07</span>
+              </div>
+            </a>
+
+            <a href="#" class="contact-link">
+              <div class="contact-link-icon"><i class="fa-brands fa-discord" aria-hidden="true"></i></div>
+              <div class="contact-link-info">
+                <strong>Discord</strong>
+                <span>raj-dev07</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="reveal-right">
+          <div class="contact-form-box">
+            <h3>Send a Message</h3>
+            <p>Have a project in mind? I'd love to hear about it.</p>
+
+            <form id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="contactName">Name</label>
+                <input
+                  type="text"
+                  id="contactName"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input
+                  type="email"
+                  id="contactEmail"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="contactMessage">Message</label>
+                <textarea
+                  id="contactMessage"
+                  name="message"
+                  placeholder="Tell me about your project or idea…"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="glow-btn" id="contactSubmit" style="width:100%;justify-content:center;">
+                Send Message <i class="fa-solid fa-paper-plane"></i>
+              </button>
+
+              <div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Designed &amp; Built by <span>Raj</span> &mdash;
+        &copy; <span id="year"></span>. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       EXTERNAL LIBRARIES — deferred for performance
+       ============================================================ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.umd.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js" defer></script>
+
+  <!-- ============================================================
+       APPLICATION JAVASCRIPT
+       ============================================================ -->
+  <script>
+    'use strict';
+
+    /* ============================================================
+       LOADER
+       ============================================================ */
+
+    (function initLoader() {
+      const loader = document.getElementById('loader');
+      const bar    = document.getElementById('loaderBar');
+      const label  = document.getElementById('loaderLabel');
+
+      const stages = [
+        { pct: 20,  text: 'Loading assets…'   },
+        { pct: 45,  text: 'Starting scripts…' },
+        { pct: 70,  text: 'Building layout…'  },
+        { pct: 90,  text: 'Almost ready…'     },
+        { pct: 100, text: 'Welcome!'           },
+      ];
+
+      let idx = 0;
+
+      function step() {
+        if (idx >= stages.length) return;
+        const s = stages[idx++];
+        bar.style.width   = s.pct + '%';
+        label.textContent = s.text;
+      }
+
+      step();
+      const ticker = setInterval(() => { step(); if (idx >= stages.length) clearInterval(ticker); }, 400);
+
+      function dismiss() {
+        clearInterval(ticker);
+        bar.style.width   = '100%';
+        label.textContent = 'Welcome!';
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          document.body.classList.add('ready');
+        }, 380);
+      }
+
+      if (document.readyState === 'complete') {
+        dismiss();
+      } else {
+        window.addEventListener('load', dismiss, { once: true });
+        setTimeout(dismiss, 6000); // safety timeout
+      }
+    })();
+
+    /* ============================================================
+       UTILITY
+       ============================================================ */
+
+    function setFooterYear() {
+      const el = document.getElementById('year');
+      if (el) el.textContent = new Date().getFullYear();
+    }
+
+    /* ============================================================
+       NAVBAR — SCROLL & ACTIVE HIGHLIGHT
+       ============================================================ */
+
+    function initNavbarScroll() {
+      const navbar = document.getElementById('navbar');
+      if (!navbar) return;
+      const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    function initNavActiveHighlight() {
+      const sections  = document.querySelectorAll('section[id]');
+      const navLinks  = document.querySelectorAll('.nav-links a[data-section]');
+      if (!sections.length || !navLinks.length) return;
+
+      const setActive = (id) => {
+        navLinks.forEach(link => {
+          link.classList.toggle('nav-active', link.dataset.section === id);
+        });
+      };
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+          });
+        },
+        { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+      );
+
+      sections.forEach(s => io.observe(s));
+    }
+
+    /* Toggle mobile menu */
+    function toggleMenu() {
+      const toggle = document.getElementById('navToggle');
+      const links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      const isOpen = toggle.classList.toggle('open');
+      links.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    /* Close mobile menu */
+    function closeMenu() {
+      const toggle = document.getElementById('navToggle');
+      const links  = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    /* Close menu when clicking outside */
+    function initNavOutsideClick() {
+      document.addEventListener('click', (e) => {
+        const toggle = document.getElementById('navToggle');
+        const links  = document.getElementById('navLinks');
+        if (!links || !links.classList.contains('open')) return;
+        if (!links.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+      });
+    }
+
+    /* ============================================================
+       THEME TOGGLE — Dark / Light Mode
+       ============================================================ */
+
+    function initThemeToggle() {
+      const btn  = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      if (!btn || !icon) return;
+
+      const STORAGE_KEY = 'raj-portfolio-theme';
+
+      function applyTheme(theme) {
+        const isLight = theme === 'light';
+        document.body.classList.toggle('light-mode', isLight);
+        icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        btn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+      }
+
+      // Read saved preference or use dark as default
+      const saved = localStorage.getItem(STORAGE_KEY) || 'dark';
+      applyTheme(saved);
+
+      btn.addEventListener('click', () => {
+        const next = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+        applyTheme(next);
+        try { localStorage.setItem(STORAGE_KEY, next); } catch (_) {}
+      });
+    }
+
+    /* ============================================================
+       TYPED.JS
+       ============================================================ */
+
+    function initTyped() {
+      if (typeof Typed === 'undefined') {
+        const el = document.getElementById('typed-output');
+        if (el) el.textContent = 'Developer.';
+        console.warn('Typed.js unavailable — static fallback applied.');
+        return;
+      }
+
+      new Typed('#typed-output', {
+        strings:    ['Developer.', 'Builder.', 'Programmer.', 'Problem Solver.'],
+        typeSpeed:  60,
+        backSpeed:  35,
+        backDelay:  1800,
+        startDelay: 500,
+        loop:       true,
+        showCursor: true,
+        cursorChar: '|',
+      });
+    }
+
+    /* ============================================================
+       PARTICLES.JS
+       ============================================================ */
+
+    function initParticles() {
+      if (typeof particlesJS === 'undefined') {
+        console.warn('particles.js unavailable — background skipped.');
+        return;
+      }
+
+      particlesJS('particles-js', {
+        particles: {
+          number:      { value: 50, density: { enable: true, value_area: 900 } },
+          color:       { value: '#8A2BE2' },
+          shape:       { type: 'circle' },
+          opacity:     { value: 0.3, random: true },
+          size:        { value: 2.5, random: true },
+          line_linked: { enable: true, distance: 140, color: '#8A2BE2', opacity: 0.1, width: 1 },
+          move:        { enable: true, speed: 0.7, direction: 'none', random: true, out_mode: 'out' },
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: { enable: true,  mode: 'grab' },
+            onclick: { enable: true,  mode: 'push' },
+            resize:  true,
+          },
+          modes: {
+            grab: { distance: 160, line_linked: { opacity: 0.3 } },
+            push: { particles_nb: 3 },
+          },
+        },
+        retina_detect: true,
+      });
+    }
+
+    /* ============================================================
+       VANILLA TILT
+       ============================================================ */
+
+    function initTilt() {
+      if (typeof VanillaTilt === 'undefined') {
+        console.warn('VanillaTilt unavailable — tilt skipped.');
+        return;
+      }
+      if (window.matchMedia('(hover: none)').matches) return;
+
+      VanillaTilt.init(document.querySelectorAll('[data-tilt]'), {
+        max:         8,
+        speed:       400,
+        glare:       false,
+        perspective: 1000,
+      });
+    }
+
+    /* ============================================================
+       GSAP SCROLL ANIMATIONS
+       ============================================================ */
+
+    function initScrollAnimations() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        console.warn('GSAP unavailable — scroll animations skipped.');
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale')
+        .forEach(el => el.classList.add('gsap-ready'));
+
+      function revealGroup(selector, fromVars) {
+        document.querySelectorAll(selector).forEach((el, i) => {
+          gsap.fromTo(
+            el,
+            { ...fromVars, opacity: 0 },
+            {
+              opacity:  1,
+              x:        0,
+              y:        0,
+              scale:    1,
+              duration: 0.75,
+              delay:    i * 0.1,
+              ease:     'power3.out',
+              scrollTrigger: {
+                trigger: el,
+                start:   'top 90%',
+                once:    true,
+              },
+            }
+          );
+        });
+      }
+
+      revealGroup('.reveal-up',    { y: 40 });
+      revealGroup('.reveal-left',  { x: -40 });
+      revealGroup('.reveal-right', { x: 40 });
+      revealGroup('.reveal-scale', { scale: 0.92 });
+
+      gsap.timeline({ delay: 0.15 })
+        .from('.hero-badge',         { y: 20, opacity: 0, duration: 0.55, ease: 'power3.out' })
+        .from('.hero-name',          { y: 30, opacity: 0, duration: 0.65, ease: 'power3.out' }, '-=0.25')
+        .from('.hero-typed-wrapper', { y: 20, opacity: 0, duration: 0.55, ease: 'power3.out' }, '-=0.35')
+        .from('.hero-desc',          { y: 20, opacity: 0, duration: 0.55, ease: 'power3.out' }, '-=0.25')
+        .from('.hero-actions',       { y: 20, opacity: 0, duration: 0.55, ease: 'power3.out' }, '-=0.25')
+        .from('#heroCodeCard',       { x: 50, opacity: 0, duration: 0.70, ease: 'power3.out' }, '-=0.45');
+    }
+
+    /* ============================================================
+       SKILL BARS
+       ============================================================ */
+
+    function initSkillBars() {
+      const bars = document.querySelectorAll('.skill-bar-fill');
+      if (!bars.length) return;
+
+      const fill = (bar) => { bar.style.width = (bar.dataset.level || '0') + '%'; };
+
+      if (typeof ScrollTrigger !== 'undefined') {
+        bars.forEach(bar => {
+          ScrollTrigger.create({
+            trigger: bar,
+            start:   'top 92%',
+            once:    true,
+            onEnter: () => fill(bar),
+          });
+        });
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach(e => { if (e.isIntersecting) { fill(e.target); io.unobserve(e.target); } }),
+          { threshold: 0.2 }
+        );
+        bars.forEach(bar => io.observe(bar));
+      }
+    }
+
+    /* ============================================================
+       STATS COUNTERS
+       ============================================================ */
+
+    function initCounters() {
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      if (!counters.length) return;
+
+      function countUp(el) {
+        const target   = parseInt(el.dataset.target, 10);
+        const suffix   = target >= 100 ? '+' : target > 10 ? '+' : '';
+        const duration = 2000;
+        const startTs  = performance.now();
+
+        function tick(now) {
+          const t = Math.min((now - startTs) / duration, 1);
+          const v = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(v * target) + (t >= 1 ? suffix : '');
+          if (t < 1) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      const io = new IntersectionObserver(
+        (entries) => entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); io.unobserve(e.target); } }),
+        { threshold: 0.3 }
+      );
+
+      counters.forEach(el => io.observe(el));
+    }
+
+    /* ============================================================
+       PROJECT BANNER IMAGE SUPPORT
+       Load project images progressively; fall back to icon if missing.
+       To add a screenshot: add data-img="path/to/img.jpg" on .project-banner
+       ============================================================ */
+
+    function initProjectImages() {
+      document.querySelectorAll('.project-banner[data-img]').forEach(banner => {
+        const src = banner.dataset.img;
+        if (!src) return;
+
+        const img = document.createElement('img');
+        img.alt     = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+
+        img.onload = () => {
+          banner.insertBefore(img, banner.firstChild);
+          banner.classList.add('has-image');
+        };
+
+        img.src = src;
+      });
+    }
+
+    /* ============================================================
+       CONTACT FORM (EmailJS-ready)
+       To connect: call emailjs.init("YOUR_PUBLIC_KEY") and update
+       the sendForm call with your service/template IDs.
+       ============================================================ */
+
+    function initContactForm() {
+      const form   = document.getElementById('contactForm');
+      const btn    = document.getElementById('contactSubmit');
+      const status = document.getElementById('formStatus');
+      if (!form) return;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name    = document.getElementById('contactName').value.trim();
+        const email   = document.getElementById('contactEmail').value.trim();
+        const message = document.getElementById('contactMessage').value.trim();
+
+        // Basic validation
+        if (!name || !email || !message) {
+          showStatus('error', 'Please fill in all fields.');
+          return;
+        }
+
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRe.test(email)) {
+          showStatus('error', 'Please enter a valid email address.');
+          return;
+        }
+
+        // Disable button while sending
+        btn.disabled      = true;
+        btn.innerHTML     = '<i class="fa-solid fa-spinner fa-spin"></i> Sending…';
+        status.className  = 'form-status';
+        status.style.display = 'none';
+
+        try {
+          /* ── EmailJS integration ──────────────────────────────────
+             Uncomment and configure when you have an EmailJS account:
+
+             await emailjs.sendForm(
+               'YOUR_SERVICE_ID',
+               'YOUR_TEMPLATE_ID',
+               form,
+               'YOUR_PUBLIC_KEY'
+             );
+          ────────────────────────────────────────────────────────── */
+
+          // Simulate network delay for demo purposes
+          await new Promise(r => setTimeout(r, 1200));
+
+          showStatus('success', '✓ Message sent! I\'ll get back to you soon.');
+          form.reset();
+        } catch (err) {
+          console.error('[ContactForm]', err);
+          showStatus('error', 'Something went wrong. Please email me directly at raj.dev.code@gmail.com');
+        } finally {
+          btn.disabled  = false;
+          btn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+        }
+      });
+
+      function showStatus(type, message) {
+        status.textContent    = message;
+        status.className      = `form-status ${type}`;
+        status.style.display  = 'block';
+      }
+    }
+
+    /* ============================================================
+       FONT AWESOME — CDN FALLBACK LOADER
+       ============================================================ */
+
+    (function loadFAWithFallback() {
+      const FALLBACK_URL = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+
+      function isFALoaded() {
+        const probe = document.createElement('i');
+        probe.className = 'fas fa-circle';
+        probe.setAttribute('aria-hidden', 'true');
+        probe.style.cssText = 'position:absolute;left:-9999px;font-size:1px;';
+        document.body.appendChild(probe);
+        const content = window.getComputedStyle(probe, ':before').content;
+        document.body.removeChild(probe);
+        return content !== 'none' && content !== '' && content !== 'normal';
+      }
+
+      function injectCSS(url) {
+        const link = document.createElement('link');
+        link.rel  = 'stylesheet';
+        link.href = url;
+        document.head.appendChild(link);
+        console.info('[FA Fallback] Loading from:', url);
+      }
+
+      window.addEventListener('load', function () {
+        if (!isFALoaded()) {
+          injectCSS(FALLBACK_URL);
+          setTimeout(() => {
+            if (!isFALoaded()) console.warn('[FA Fallback] Both CDNs failed — icons may not display.');
+          }, 3000);
+        }
+      }, { once: true });
+    })();
+
+    /* ============================================================
+       BOOT — run all initialisers when the DOM is ready.
+       ============================================================ */
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const run = (name, fn) => { try { fn(); } catch (err) { console.error(`[${name}]`, err); } };
+
+      run('setFooterYear',          setFooterYear);
+      run('initNavbarScroll',       initNavbarScroll);
+      run('initNavActiveHighlight', initNavActiveHighlight);
+      run('initNavOutsideClick',    initNavOutsideClick);
+      run('initThemeToggle',        initThemeToggle);
+      run('initTyped',              initTyped);
+      run('initParticles',          initParticles);
+      run('initTilt',               initTilt);
+      run('initScrollAnimations',   initScrollAnimations);
+      run('initSkillBars',          initSkillBars);
+      run('initCounters',           initCounters);
+      run('initProjectImages',      initProjectImages);
+      run('initContactForm',        initContactForm);
+    });
+
+  </script>
+
+</body>
+</html>
